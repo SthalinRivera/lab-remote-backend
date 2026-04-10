@@ -1,3 +1,4 @@
+//controllers/device.controller.js
 let estado = "OFF";
 
 export const getEstado = (req, res) => {
