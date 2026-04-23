@@ -4,8 +4,6 @@ dotenv.config();
 
 import admin from "firebase-admin";
 
-
-
 admin.initializeApp({
   credential: admin.credential.cert({
     projectId: process.env.FIREBASE_PROJECT_ID,
@@ -16,9 +14,6 @@ admin.initializeApp({
   }),
   storageBucket: process.env.FIREBASE_BUCKET,
 });
-
 const bucket = admin.storage().bucket();
-
-
 
 export default bucket;

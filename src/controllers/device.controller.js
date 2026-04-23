@@ -7,7 +7,6 @@ export const getEstado = (req, res) => {
 
 export const encender = (req, res) => {
   estado = "ON";
-  console.log("LED ENCENDIDO");
   res.send("OK");
 };
 

@@ -1,8 +1,8 @@
 import "dotenv/config";
 import app from "./app.js";
 import bucket from "./firebase.js";
-
-const PORT = 3001;
+import "./services/worker.js";
+const PORT = 4000;
 
 
 (async () => {
