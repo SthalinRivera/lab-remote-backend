@@ -12,14 +12,14 @@ export const joinQueue = async (userId) => {
     return exists.rows[0];
   }
 
-  const result = await db.query(`
+  const result = await db.query(`   
     INSERT INTO queue (id, user_id, status)
     VALUES (uuid_generate_v4(), $1, 'waiting')
     RETURNING *
   `, [userId]);
 
   return result.rows[0];
-};
+};  
 
 export const getQueueStatus = async (userId) => {
   const q = await db.query(`

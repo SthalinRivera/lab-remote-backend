@@ -15,4 +15,4 @@ export const getActiveSession = async (userId) => {
   `, [userId]);
 
   return s.rows[0] || null;
-};
+};  

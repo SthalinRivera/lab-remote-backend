@@ -7,12 +7,13 @@ import dhtRoutes from "./routes/dht.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import queueRoutes from "./routes/queue.routes.js";
 import sessionRoutes from "./routes/session.routes.js";
+import  usersRoutes from "./routes/users.routes.js"
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use("/auth", authRoutes);
-
+app.use("/api/users", usersRoutes);
 app.use("/api/dht", dhtRoutes);
 app.use("/api/device", deviceRoutes);
 app.use("/api/ota", otaRoutes); // 🔥 IMPORTANTE
