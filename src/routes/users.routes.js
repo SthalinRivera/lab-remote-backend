@@ -18,6 +18,8 @@ router.delete("/:id", UsersController.deleteUser);
 router.post("/", UsersController.createUser);          // crear individual
 router.put("/:id", UsersController.updateUser);        // actualizar datos
 router.post("/bulk", UsersController.createUsersBulk); // creación masiva
+// 🔥 NUEVA RUTA: Aprobar usuario pendiente
+router.put("/:id/approve", UsersController.approveUser);
 
 
 export default router;

@@ -4,7 +4,7 @@ export const UsersService = {
 
   async getAll() {
     const res = await db.query(`
-      SELECT id, email, name, avatar_url, role, created_at
+      SELECT id, email, name, avatar_url, role, status, created_at
       FROM users
       ORDER BY created_at DESC
     `);
@@ -115,5 +115,33 @@ export const UsersService = {
     } finally {
       client.release();
     }
+  },
+
+
+  // NUEVO: Aprobar usuario pendiente
+  async approve(id) {
+    const res = await db.query(
+      `UPDATE users 
+       SET status = 'active' 
+       WHERE id = $1 AND status = 'pending'
+       RETURNING id, email, name, avatar_url, role, status, created_at`,
+      [id]
+    );
+    if (res.rows.length === 0) {
+      throw new Error('User not found or already approved');
+    }
+    return res.rows[0];
+  },
+
+  // NUEVO: Obtener usuarios pendientes
+  async getPending() {
+    const res = await db.query(`
+      SELECT id, email, name, avatar_url, role, status, created_at
+      FROM users
+      WHERE status = 'pending'
+      ORDER BY created_at DESC
+    `);
+    return res.rows;
   }
+
 };

@@ -97,7 +97,24 @@ export const UsersController = {
       if (err.message.includes('Email already exists')) {
         return res.status(409).json({ message: err.message });
       }
-      res.status(500).json({ error: err.message });   
+      res.status(500).json({ error: err.message });
+    }
+  },
+
+
+  async approveUser(req, res) {
+    try {
+      const { id } = req.params;
+      const user = await UsersService.approve(id);
+      res.json({
+        message: "User approved successfully",
+        user
+      });
+    } catch (err) {
+      if (err.message === 'User not found or already approved') {
+        return res.status(404).json({ message: err.message });
+      }
+      res.status(500).json({ error: err.message });
     }
   }
 };
