@@ -27,7 +27,7 @@ setInterval(async () => {
         // crear sesión
         const sessionRes = await db.query(`
           INSERT INTO sessions (id, user_id, started_at, ends_at, status)
-          VALUES (uuid_generate_v4(), $1, now(), now() + interval '5 minutes', 'active')
+          VALUES (uuid_generate_v4(), $1, now(), now() + interval '10 minutes', 'active')
           RETURNING id
         `, [user.user_id]);
 
