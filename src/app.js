@@ -8,8 +8,9 @@ import authRoutes from "./routes/auth.routes.js";
 import queueRoutes from "./routes/queue.routes.js";
 import sessionRoutes from "./routes/session.routes.js";
 import usersRoutes from "./routes/users.routes.js"
-import metricsRoutes from "./routes/metrics.routes.js"; 
-import dashboardRoutes from "./routes/dashboard.routes.js"; 
+import metricsRoutes from "./routes/metrics.routes.js";
+import dashboardRoutes from "./routes/dashboard.routes.js";
+import labRoutes from './routes/lab.routes.js';
 
 const app = express();
 
@@ -25,4 +26,5 @@ app.use("/api/message", messageRoutes);
 app.use("/api/queue", queueRoutes);
 app.use("/api/session", sessionRoutes);
 app.use("/api/metrics", metricsRoutes); // ✅ agregado
+app.use('/api/lab', labRoutes);
 export default app;
