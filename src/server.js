@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 4000;
 
 (async () => {
   try {
-    const [files] = await bucket.getFiles();
+    await bucket.getFiles();
     console.log("🔥 Firebase conectado");
   } catch (error) {
     console.error("❌ Error Firebase:", error);
