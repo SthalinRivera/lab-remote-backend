@@ -1,23 +1,17 @@
-# Imagen oficial de Node
-FROM node:20-alpine
+FROM node:22-alpine
 
-# Carpeta de trabajo
+RUN apk add --no-cache dumb-init
+
 WORKDIR /app
 
-# Copiar package.json
 COPY package*.json ./
 
-# Instalar dependencias
 RUN npm install
 
-# Copiar proyecto
 COPY . .
 
-# Puerto del backend
-EXPOSE 4000
-
-# Producción
 ENV NODE_ENV=production
 
-# Iniciar app
-CMD ["npm", "start"]
+EXPOSE 3000
+
+CMD ["dumb-init", "npm", "start"]
