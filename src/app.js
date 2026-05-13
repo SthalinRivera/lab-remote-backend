@@ -18,6 +18,18 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.get("/", (_, res) => {
+    res.status(200).json({
+        ok: true,
+        message: "🚀 Lab Remote API funcionando correctamente"
+    });
+});
+
+app.get("/health", (_, res) => {
+    res.status(200).json({
+        status: "ok"
+    });
+});
 app.use("/auth", authRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/users", usersRoutes);
