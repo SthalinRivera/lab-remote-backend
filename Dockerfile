@@ -1,7 +1,7 @@
 # Imagen oficial de Node
 FROM node:20-alpine
 
-# Carpeta de trabajo dentro del contenedor
+# Carpeta de trabajo
 WORKDIR /app
 
 # Copiar package.json
@@ -10,14 +10,14 @@ COPY package*.json ./
 # Instalar dependencias
 RUN npm install
 
-# Copiar todo el proyecto
+# Copiar proyecto
 COPY . .
 
-# Puerto de tu backend
-EXPOSE 3000
+# Puerto del backend
+EXPOSE 4000
 
-# Variables entorno
+# Producción
 ENV NODE_ENV=production
 
-# Comando para iniciar
+# Iniciar app
 CMD ["npm", "start"]
